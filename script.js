@@ -1,171 +1,167 @@
+// ============================================================
+// Footer year
+// ============================================================
+document.getElementById('year').textContent = new Date().getFullYear();
 
+// ============================================================
+// Typed role text in hero eyebrow
+// ============================================================
+const roles = [
+  'BUILDING WEB APPLICATIONS',
+  'FORMERLY CREDIT RISK',
+  'HTML \u2022 CSS \u2022 JAVASCRIPT \u2022 REACT',
+];
+const typedEl = document.getElementById('typed-role');
+let roleIndex = 0;
+let charIndex = 0;
+let deleting = false;
 
+function typeLoop() {
+  if (!typedEl) return;
+  const current = roles[roleIndex];
 
-
-/* ===========================================================
-   PORTFOLIO SCRIPT.JS
-   This file handles three things:
-   1. Dark / light theme toggle (saved to localStorage)
-   2. Mobile navigation menu toggle
-   3. Contact form validation
-=========================================================== */
-
-// Wait until the whole page has loaded before running our code
-document.addEventListener('DOMContentLoaded', function () {
-
-  // -----------------------------------------------------
-  // 1. DARK / LIGHT THEME TOGGLE
-  // -----------------------------------------------------
-
-  // Grab the elements we need
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const themeIcon = document.getElementById('theme-icon');
-  const htmlElement = document.documentElement; // the <html> tag
-
-  // Check if the user already chose a theme before (saved in localStorage)
-  const savedTheme = localStorage.getItem('portfolio-theme');
-
-  if (savedTheme === 'dark') {
-    htmlElement.classList.add('dark-theme');
-    themeIcon.textContent = '☀️'; // show a sun icon to switch back to light
-  }
-
-  // Run this every time the button is clicked
-  themeToggleBtn.addEventListener('click', function () {
-    // toggle() adds the class if it's missing, removes it if present
-    htmlElement.classList.toggle('dark-theme');
-
-    // Check which theme we are on now and update everything to match
-    const isDark = htmlElement.classList.contains('dark-theme');
-
-    if (isDark) {
-      themeIcon.textContent = '☀️';
-      localStorage.setItem('portfolio-theme', 'dark');
-    } else {
-      themeIcon.textContent = '🌙';
-      localStorage.setItem('portfolio-theme', 'light');
+  if (!deleting) {
+    charIndex++;
+    typedEl.textContent = current.slice(0, charIndex);
+    if (charIndex === current.length) {
+      deleting = true;
+      setTimeout(typeLoop, 1600);
+      return;
     }
+  } else {
+    charIndex--;
+    typedEl.textContent = current.slice(0, charIndex);
+    if (charIndex === 0) {
+      deleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+    }
+  }
+  setTimeout(typeLoop, deleting ? 35 : 55);
+}
+typeLoop();
+
+// ============================================================
+// Mobile nav toggle
+// ============================================================
+const navToggle = document.getElementById('nav-toggle');
+const mainNav = document.getElementById('main-nav');
+if (navToggle && mainNav) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = mainNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
   });
-
-
-  // -----------------------------------------------------
-  // 2. MOBILE NAVIGATION MENU TOGGLE
-  // -----------------------------------------------------
-
-  const navToggleBtn = document.getElementById('nav-toggle');
-  const mainNav = document.getElementById('main-nav');
-
-  navToggleBtn.addEventListener('click', function () {
-    // Show or hide the nav menu by adding/removing the "open" class
-    mainNav.classList.toggle('open');
-
-    // Update aria-expanded so screen readers know if the menu is open
-    const isOpen = mainNav.classList.contains('open');
-    navToggleBtn.setAttribute('aria-expanded', isOpen);
-  });
-
-  // Close the mobile menu automatically when a link is clicked
-  // (loop through every link inside the nav)
-  const navLinks = mainNav.querySelectorAll('a');
-
-  navLinks.forEach(function (link) {
-    link.addEventListener('click', function () {
+  mainNav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
       mainNav.classList.remove('open');
-      navToggleBtn.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-expanded', 'false');
     });
   });
+}
 
+// ============================================================
+// Scroll reveal (progressive enhancement — content is visible
+// by default; this only adds a subtle animation when supported)
+// ============================================================
+const revealItems = document.querySelectorAll('[data-reveal]');
 
-  // -----------------------------------------------------
-  // 3. CONTACT FORM VALIDATION
-  // -----------------------------------------------------
+if ('IntersectionObserver' in window && revealItems.length) {
+  revealItems.forEach((item) => item.classList.add('reveal-init'));
 
-  const contactForm = document.getElementById('contact-form');
-  const successMessage = document.getElementById('form-success');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
 
-  // Simple regular expression to check for a valid-looking email
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  revealItems.forEach((item) => revealObserver.observe(item));
 
-  contactForm.addEventListener('submit', function (event) {
-    // Stop the form from refreshing the page (we are not sending it anywhere yet)
-    event.preventDefault();
+  // Safety net: if an element never intersects for any reason,
+  // force it visible after a few seconds so content is never stuck hidden.
+  setTimeout(() => {
+    revealItems.forEach((item) => item.classList.add('is-visible'));
+  }, 4000);
+}
 
-    // Grab the current values from each field, trimming extra spaces
-    const nameField = document.getElementById('name');
-    const emailField = document.getElementById('email');
-    const messageField = document.getElementById('message');
+// ============================================================
+// Skill bar fill on scroll into view
+// ============================================================
+const skillFills = document.querySelectorAll('.skill-fill');
+const skillsSection = document.querySelector('.skills');
 
-    const nameValue = nameField.value.trim();
-    const emailValue = emailField.value.trim();
-    const messageValue = messageField.value.trim();
+if ('IntersectionObserver' in window && skillsSection) {
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        skillFills.forEach((fill, i) => {
+          setTimeout(() => fill.classList.add('filled'), i * 90);
+        });
+        skillObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  skillObserver.observe(skillsSection);
+} else {
+  // No IntersectionObserver support: just fill the bars immediately.
+  skillFills.forEach((fill) => fill.classList.add('filled'));
+}
 
-    // Assume the form is valid until we find a problem
-    let isFormValid = true;
+// ============================================================
+// 3D tilt effect on project cards
+// ============================================================
+const tiltCards = document.querySelectorAll('[data-tilt]');
+tiltCards.forEach((card) => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `perspective(800px) rotateX(${(-y * 8).toFixed(2)}deg) rotateY(${(x * 8).toFixed(2)}deg) translateY(-4px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+  });
+});
 
-    // --- Check the name field ---
-    if (nameValue === '') {
-      showError(nameField, 'name-error', 'Please enter your name.');
-      isFormValid = false;
-    } else {
-      clearError(nameField, 'name-error');
+// ============================================================
+// Contact form validation (client-side only, no backend)
+// ============================================================
+const form = document.getElementById('contact-form');
+if (form) {
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const messageInput = document.getElementById('message');
+  const successMsg = document.getElementById('form-success');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let valid = true;
+
+    document.getElementById('name-error').textContent = '';
+    document.getElementById('email-error').textContent = '';
+    document.getElementById('message-error').textContent = '';
+    successMsg.classList.remove('show');
+
+    if (!nameInput.value.trim()) {
+      document.getElementById('name-error').textContent = 'Please enter your name.';
+      valid = false;
     }
 
-    // --- Check the email field ---
-    if (emailValue === '') {
-      showError(emailField, 'email-error', 'Please enter your email address.');
-      isFormValid = false;
-    } else if (!emailPattern.test(emailValue)) {
-      showError(emailField, 'email-error', 'Please enter a valid email address.');
-      isFormValid = false;
-    } else {
-      clearError(emailField, 'email-error');
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(emailInput.value.trim())) {
+      document.getElementById('email-error').textContent = 'Please enter a valid email.';
+      valid = false;
     }
 
-    // --- Check the message field ---
-    if (messageValue === '') {
-      showError(messageField, 'message-error', 'Please write a short message.');
-      isFormValid = false;
-    } else if (messageValue.length < 10) {
-      showError(messageField, 'message-error', 'Your message should be at least 10 characters long.');
-      isFormValid = false;
-    } else {
-      clearError(messageField, 'message-error');
+    if (!messageInput.value.trim()) {
+      document.getElementById('message-error').textContent = 'Please enter a message.';
+      valid = false;
     }
 
-    // If everything passed, show the success message and reset the form
-    if (isFormValid) {
-      successMessage.classList.add('visible');
-      contactForm.reset();
-
-      // Hide the success message again after a few seconds
-      setTimeout(function () {
-        successMessage.classList.remove('visible');
-      }, 4000);
-    } else {
-      // Make sure the success message is hidden if there were errors
-      successMessage.classList.remove('visible');
+    if (valid) {
+      successMsg.classList.add('show');
+      form.reset();
     }
   });
-
-  // Helper function: displays an error message under a field
-  function showError(field, errorId, message) {
-    const errorElement = document.getElementById(errorId);
-    errorElement.textContent = message;
-    field.closest('.form-group').classList.add('invalid');
-  }
-
-  // Helper function: clears an error message from a field
-  function clearError(field, errorId) {
-    const errorElement = document.getElementById(errorId);
-    errorElement.textContent = '';
-    field.closest('.form-group').classList.remove('invalid');
-  }
-
-
-  // -----------------------------------------------------
-  // BONUS: automatically update the footer year
-  // -----------------------------------------------------
-  const yearSpan = document.getElementById('year');
-  yearSpan.textContent = new Date().getFullYear();
-
-});
+}

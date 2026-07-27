@@ -4,40 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Basic tags -->
-  <title>Sijabulile Ncube | Software Developer Portfolio</title>
-  <meta name="description" content="Portfolio of Sijabulile Ncube, an aspiring software developer with a background in financial services, showcasing projects built with HTML, CSS and JavaScript." />
+  <title>Sijabulile Ncube | Software Developer</title>
+  <meta name="description" content="Portfolio of Sijabulile Ncube — a credit risk specialist turned software developer, building web applications with HTML, CSS, JavaScript and React." />
   <meta name="author" content="Sijabulile Ncube" />
 
-  <!-- Google Fonts -->
+  <!-- Fonts: Sora (display), Inter (body), JetBrains Mono (terminal/data) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!--HEADER / NAVIGATION-->
+  <!-- background circuit grid + noise layer -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#home" class="logo">SN<span class="logo-dot">.</span></a>
+      <a href="#home" class="logo">
+        <span class="logo-mark">SN</span>
+        <span class="logo-pulse" aria-hidden="true"></span>
+      </a>
 
-      <!-- Nav links -->
       <nav class="main-nav" id="main-nav">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="#home"><span class="nav-index">00</span>Home</a>
+        <a href="#about"><span class="nav-index">01</span>About</a>
+        <a href="#projects"><span class="nav-index">02</span>Projects</a>
+        <a href="#contact"><span class="nav-index">03</span>Contact</a>
       </nav>
 
-      <!-- Right side controls: theme toggle + mobile menu button -->
       <div class="header-controls">
-        <button id="theme-toggle" class="icon-btn" aria-label="Switch between light and dark theme">
-          <!-- Sun / moon icon swapped via JS -->
-          <span id="theme-icon">🌙</span>
-        </button>
+        <a href="assets/cv.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-small">Resume</a>
         <button id="nav-toggle" class="icon-btn nav-toggle" aria-label="Open menu" aria-expanded="false">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -47,200 +47,233 @@
     </div>
   </header>
 
-  <!-- HERO / HOME SECTION -->
+  <!-- HERO -->
   <section id="home" class="hero">
     <div class="container hero-inner">
 
-      <!-- Left side: text content -->
-      <div class="hero-text-col">
-        <p class="eyebrow">Hello, I'm</p>
-        <h1 class="hero-title">Sijabulile Ncube</h1>
-        <p class="hero-subtitle">Financial Services Professional transitioning into Software Development </p>
+      <div class="hero-text-col" data-reveal>
+        <p class="eyebrow"><span class="prompt">&gt;</span> <span id="typed-role"></span><span class="cursor">_</span></p>
+        <h1 class="hero-title">Sijabulile<br />Ncube</h1>
+        <p class="hero-subtitle">Credit Risk Specialist <span class="sep">/</span> Software Developer</p>
 
         <p class="hero-text">
-          With over 10 years of experience in financial services, I have built a strong foundation
-          in analysis, problem-solving and stakeholder management. I am now applying these skills to
-          software development, where I have built multiple projects using HTML, CSS and JavaScript.
-          I am passionate about technology, continuous learning, and developing innovative solutions
-          that create real business value.
+          Ten-plus years reading risk in financial data, now channelled into building interfaces.
+          I design and ship web applications with HTML, CSS, JavaScript and React, bringing the same
+          discipline for detail and structured thinking from banking into every line of code.
         </p>
 
         <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#projects" class="btn btn-primary">
+            <span>View My Work</span>
+            <span class="btn-arrow">→</span>
+          </a>
           <a href="#contact" class="btn btn-secondary">Get In Touch</a>
         </div>
 
-        <!-- my externallinks -->
         <ul class="social-links">
           <li>
             <a href="https://github.com/SIJABULILE-NCUBE" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-              <span class="social-icon">🐙</span> GitHub
+              GitHub
             </a>
           </li>
           <li>
             <a href="https://www.linkedin.com/in/sijabulilemn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
-              <span class="social-icon">in</span> LinkedIn
+              LinkedIn
             </a>
           </li>
           <li>
-            <!-- CV -->
-            <a href="assets/cv.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download CV">
-              <span class="social-icon">📄</span> My CV
+            <a href="https://sijabulile-ncube.github.io/assets/cv.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download resume PDF">
+              Resume
             </a>
           </li>
         </ul>
       </div>
 
-      <!-- profile picture -->
-      <div class="hero-image-col">
-        <div class="profile-photo-wrap">
-          
-          <img src="assets/profile.jpg" alt="Photo of Sijabulile Ncube" class="profile-photo" />
+      <!-- ORBIT SIGNATURE ELEMENT -->
+      <div class="hero-image-col" data-reveal>
+        <div class="orbit-system">
+
+          <!-- rotating text ring -->
+          <svg class="orbit-ring-text" viewBox="0 0 300 300" aria-hidden="true">
+            <defs>
+              <path id="ringPath" d="M 150,150 m -130,0 a 130,130 0 1,1 260,0 a 130,130 0 1,1 -260,0" />
+            </defs>
+            <text>
+              <textPath href="#ringPath" startOffset="0%">
+                SOFTWARE DEVELOPER • CREDIT RISK SPECIALIST • CONTINUOUS LEARNER •
+              </textPath>
+            </text>
+          </svg>
+
+          <!-- dashed rotating ring, opposite direction -->
+          <div class="orbit-ring-dashed" aria-hidden="true"></div>
+
+          <!-- orbiting skill nodes -->
+          <div class="orbit-track orbit-track-1" aria-hidden="true">
+            <span class="orbit-pos" style="--angle:0deg"><span class="orbit-node">HTML</span></span>
+            <span class="orbit-pos" style="--angle:120deg"><span class="orbit-node">CSS</span></span>
+            <span class="orbit-pos" style="--angle:240deg"><span class="orbit-node">JS</span></span>
+          </div>
+          <div class="orbit-track orbit-track-2" aria-hidden="true">
+            <span class="orbit-pos" style="--angle:60deg"><span class="orbit-node orbit-node-alt">REACT</span></span>
+            <span class="orbit-pos" style="--angle:180deg"><span class="orbit-node orbit-node-alt">GIT</span></span>
+            <span class="orbit-pos" style="--angle:300deg"><span class="orbit-node orbit-node-alt">RISK</span></span>
+          </div>
+
+          <!-- photo -->
+          <div class="profile-photo-wrap">
+            <div class="profile-photo-glow"></div>
+            <img src="assets/profile.jpg" alt="Photo of Sijabulile Ncube" class="profile-photo" />
+          </div>
         </div>
       </div>
 
     </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <span>SCROLL</span>
+      <span class="scroll-line"></span>
+    </div>
   </section>
 
-  <!-- ABOUT SECTION-->
+  <!-- ABOUT -->
   <section id="about" class="about">
     <div class="container">
-      <h2 class="section-title"><span class="section-number">01</span> About Me</h2>
+      <h2 class="section-title" data-reveal><span class="section-number">01</span> About Me</h2>
 
       <div class="about-grid">
-        <div class="about-text">
-          <p>
-            I spent over a decade working in financial services, where I developed strong skills in
-            data analysis, problem-solving and working with stakeholders across different teams.
-            These experiences taught me how to break down complex problems and communicate
-            solutions clearly , skills that translate directly into software development.
-          </p>
-          <p>
-            I am now channelling that experience into building web applications. I enjoy the
-            process of turning an idea into a working website, from planning the layout, to
-            writing clean HTML and CSS, to adding interactivity with JavaScript. I am a
-            continuous learner who is excited about the opportunities technology creates to
-            solve real business problems.
-          </p>
+        <div class="about-text" data-reveal>
+          <div class="terminal-card">
+            <div class="terminal-bar">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span class="terminal-title">profile.md</span>
+            </div>
+            <div class="terminal-body">
+              <p>
+                <span class="mono-tag">// background</span><br />
+                I spent over a decade in financial services, reviewing credit risk and validating
+                financial data for regulated banking clients. That work sharpened my ability to break
+                complex problems into manageable pieces, and to communicate clearly under pressure.
+              </p>
+              <p>
+                <span class="mono-tag">// pivot</span><br />
+                I am now applying that same rigour to software development, building responsive web
+                applications with HTML, CSS, JavaScript and React. I care about clean structure,
+                readable code, and interfaces that feel considered rather than default.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="skills">
-          <h3>Skills</h3>
+        <div class="skills" data-reveal>
+          <h3 class="skills-title">Skill Index</h3>
           <ul class="skill-list">
-            <li><span class="skill-name">HTML5</span></li>
-            <li><span class="skill-name">CSS3 &amp; Responsive Design</span></li>
-            <li><span class="skill-name">JavaScript (DOM, Events, Logic)</span></li>
-            <li><span class="skill-name">Git &amp; GitHub</span></li>
-            <li><span class="skill-name">Problem-Solving &amp; Analysis</span></li>
-            <li><span class="skill-name">Stakeholder Communication</span></li>
+            <li class="skill-row">
+              <span class="skill-name">HTML5</span>
+              <span class="skill-bar"><span class="skill-fill" style="--level:92%"></span></span>
+              <span class="skill-value">92%</span>
+            </li>
+            <li class="skill-row">
+              <span class="skill-name">CSS3 &amp; Responsive Design</span>
+              <span class="skill-bar"><span class="skill-fill" style="--level:88%"></span></span>
+              <span class="skill-value">88%</span>
+            </li>
+            <li class="skill-row">
+              <span class="skill-name">JavaScript</span>
+              <span class="skill-bar"><span class="skill-fill" style="--level:80%"></span></span>
+              <span class="skill-value">80%</span>
+            </li>
+            <li class="skill-row">
+              <span class="skill-name">React</span>
+              <span class="skill-bar"><span class="skill-fill" style="--level:74%"></span></span>
+              <span class="skill-value">74%</span>
+            </li>
+            <li class="skill-row">
+              <span class="skill-name">Git &amp; GitHub</span>
+              <span class="skill-bar"><span class="skill-fill" style="--level:85%"></span></span>
+              <span class="skill-value">85%</span>
+            </li>
+            <li class="skill-row">
+              <span class="skill-name">Risk &amp; Analytical Thinking</span>
+              <span class="skill-bar"><span class="skill-fill" style="--level:98%"></span></span>
+              <span class="skill-value">98%</span>
+            </li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS SECTION -->
+  <!-- PROJECTS -->
   <section id="projects" class="projects">
     <div class="container">
-      <h2 class="section-title"><span class="section-number">02</span> Projects</h2>
-      <p class="section-intro">A selection of projects I have built while learning HTML, CSS and JavaScript.</p>
+      <h2 class="section-title" data-reveal><span class="section-number">02</span> Projects</h2>
+      <p class="section-intro" data-reveal>A selection of projects built while learning HTML, CSS, JavaScript and React.</p>
 
       <div class="project-grid">
 
-        <!-- Project 1 -->
-        <article class="project-card">
-          <div class="project-image" aria-hidden="true">
-            <span class="project-emoji">📊</span>
+        <article class="project-card" data-reveal data-tilt>
+          <div class="project-image has-shot" aria-hidden="true">
+            <img src="assets/screens/laundry.jpg" alt="House of Laundry website screenshot" class="project-shot" />
+            <div class="scan-line"></div>
           </div>
           <div class="project-body">
-            <h3 class="project-title">Jabu's Habit Tracker</h3>
+            <h3 class="project-title">House of Laundry</h3>
             <p class="project-desc">
-              A daily habit tracking web application that helps users build consistency by
-              monitoring habits, streaks and overall progress. Habits are organised into
-              categories such as Work, Studies, Wellness and Family. Built as a beginner
-              JavaScript project covering variables, arrays, objects, functions, conditionals,
-              loops, DOM manipulation, event handling and form validation.
+              A 7-page responsive website redesign for a real Soweto-based laundry business,
+              built after direct client outreach, with custom animations and a full dark mode.
             </p>
             <ul class="tech-tags">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
+              <li>React</li><li>Vite</li><li>Tailwind CSS</li>
             </ul>
-            <a href="https://github.com/SIJABULILE-NCUBE/JABUS-HABIT-TRACKER" target="_blank" rel="noopener noreferrer" class="project-link">
-              View on GitHub &rarr;
+            <a href="https://house-of-laundry.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+              View Live Site <span class="btn-arrow">→</span>
+            </a>
+            <a href="https://github.com/SIJABULILE-NCUBE/HOUSE-OF-LAUNDRY-REDESIGN" target="_blank" rel="noopener noreferrer" class="project-link project-link-secondary">
+              View on GitHub <span class="btn-arrow">→</span>
             </a>
           </div>
         </article>
 
-        <!-- Project 2 -->
-        <article class="project-card">
-          <div class="project-image" aria-hidden="true">
-            <span class="project-emoji">🪴</span>
+        <article class="project-card" data-reveal data-tilt>
+          <div class="project-image project-image-4" aria-hidden="true">
+            <span class="project-emoji">🎧</span>
+            <div class="scan-line"></div>
           </div>
           <div class="project-body">
-            <h3 class="project-title">4C Hair Garden Naturals</h3>
+            <h3 class="project-title">Podcast Discovery App</h3>
             <p class="project-desc">
-              A beginner-friendly business website created to showcase natural Ayurvedic hair
-              care products made from home-grown herbs and botanical oils. The site focuses on
-              presenting products for nourishing, moisturising and maintaining healthy hair,
-              and was built as part of an HTML and CSS web development project.
+              A responsive React application for discovering and streaming podcasts, with custom
+              hooks for audio playback, favourites, listening progress and theming.
             </p>
             <ul class="tech-tags">
-              <li>HTML</li>
-              <li>CSS</li>
+              <li>React</li><li>Vite</li><li>JavaScript</li>
             </ul>
-            <a href="https://github.com/SIJABULILE-NCUBE/PROFESSIONAL-BUSINESS-WEBSITE--4C-NATURALS" target="_blank" rel="noopener noreferrer" class="project-link">
-              View on GitHub &rarr;
+            <a href="https://sijncu-25575-pto-2508-a-sijabulile.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">
+              View Live Site <span class="btn-arrow">→</span>
+            </a>
+            <a href="https://github.com/SIJABULILE-NCUBE/SIJNCU25575-PTO2508_A_SIJABULILE-NCUBE_DJSPP" target="_blank" rel="noopener noreferrer" class="project-link project-link-secondary">
+              View on GitHub <span class="btn-arrow">→</span>
             </a>
           </div>
         </article>
 
-        <!-- Project 3 -->
-        <article class="project-card">
-          <div class="project-image" aria-hidden="true">
-            <span class="project-emoji">🟥</span>
+        <article class="project-card" data-reveal data-tilt>
+          <div class="project-image has-shot" aria-hidden="true">
+            <img src="assets/screens/kanban.jpg" alt="Kanban board app screenshot" class="project-shot" />
+            <div class="scan-line"></div>
           </div>
           <div class="project-body">
             <h3 class="project-title">Kanban Board App</h3>
             <p class="project-desc">
-              This project is a Kanban Board App built to help users manage their tasks in a simple and organized way.
-             Tasks are divided into three columns:<br>
-
-             📝 To Do<br>
-             ⚙️ Doing<br>
-             ✅ Done<br>
-
-The app is designed to be easy to use, responsive, and reliable, with data saved even after refreshing the page.
+              A task management app with To Do, Doing and Done columns. Built to be easy to use,
+              responsive, and reliable, with data persisted even after a page refresh.
             </p>
             <ul class="tech-tags">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
+              <li>HTML</li><li>CSS</li><li>JavaScript</li>
             </ul>
             <a href="https://github.com/SIJABULILE-NCUBE/SIJNCU25575_PTO2508_A_SIJABULILE_NCUBE_JSLPP" target="_blank" rel="noopener noreferrer" class="project-link">
-              View on GitHub &rarr;
-            </a>
-          </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="project-card">
-          <div class="project-image" aria-hidden="true">
-            <span class="project-emoji">👩🏼‍💻</span>
-          </div>
-          <div class="project-body">
-            <h3 class="project-title">React Podcast Landing Page</h3>
-            <p class="project-desc">
-              A responsive React application that allows users to discover and browse podcasts using data fetched from an external API. The application demonstrates React fundamentals including state management, component-based architecture, conditional rendering, API integration, and responsive design.
-            </p>
-            <ul class="tech-tags">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-                <li>React</li>
-            </ul>
-            <a href="https://github.com/SIJABULILE-NCUBE/SIJNCU25575_PTO2508_A_SIJABULILE-NCUBE_DJS03" target="_blank" rel="noopener noreferrer" class="project-link">
-              View on GitHub &rarr;
+              View on GitHub <span class="btn-arrow">→</span>
             </a>
           </div>
         </article>
@@ -249,24 +282,24 @@ The app is designed to be easy to use, responsive, and reliable, with data saved
     </div>
   </section>
 
-  <!-- CONTACT SECTION  -->
+  <!-- CONTACT -->
   <section id="contact" class="contact">
     <div class="container">
-      <h2 class="section-title"><span class="section-number">03</span> Get In Touch</h2>
-      <p class="section-intro">
-        Have a question or want to work together? Fill in the form below and I'll get back to you.
+      <h2 class="section-title" data-reveal><span class="section-number">03</span> Get In Touch</h2>
+      <p class="section-intro" data-reveal>
+        Have a question or want to work together? Send a message below.
       </p>
 
-      <form id="contact-form" class="contact-form" novalidate>
+      <form id="contact-form" class="contact-form" novalidate data-reveal>
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Sijabulile Ncube" />
+          <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" />
           <span class="error-message" id="name-error"></span>
         </div>
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" value="s.mabhena@gmail.com" />
+          <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" />
           <span class="error-message" id="email-error"></span>
         </div>
 
@@ -276,10 +309,12 @@ The app is designed to be easy to use, responsive, and reliable, with data saved
           <span class="error-message" id="message-error"></span>
         </div>
 
-        <button type="submit" class="btn btn-primary">Send Message</button>
+        <button type="submit" class="btn btn-primary">
+          <span>Send Message</span>
+          <span class="btn-arrow">→</span>
+        </button>
 
-        <!-- Shown after a successful "submit" -->
-        <p class="form-success" id="form-success">Thanks for your message! I'll get back to you soon.</p>
+        <p class="form-success" id="form-success">Message received. I'll get back to you soon.</p>
       </form>
     </div>
   </section>
@@ -296,7 +331,6 @@ The app is designed to be easy to use, responsive, and reliable, with data saved
     </div>
   </footer>
 
-  <!-- JavaScript linK -->
   <script src="script.js"></script>
 </body>
 </html>
