@@ -586,7 +586,7 @@ section { position: relative; z-index: 1; padding: 120px 0; }
 ========================================================= */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
 
@@ -760,10 +760,6 @@ section { position: relative; z-index: 1; padding: 120px 0; }
 /* =========================================================
    RESPONSIVE
 ========================================================= */
-@media (max-width: 1000px) {
-  .project-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; }
   .hero-image-col { order: -1; margin-bottom: 20px; }
