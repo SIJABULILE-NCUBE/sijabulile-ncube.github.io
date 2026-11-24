@@ -1,10 +1,16 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { Background, Nav } from './components/Layout';
 import { Hero } from './components/Hero';
 
 const Below = lazy(() => import('./Below'));
 
 export default function App() {
+  // The pre-rendered HTML contains only the placeholder. Mounting the lazy content after hydration keeps the
+  // server and client markup identical (no hydration errors) and lets the hero paint before anything else.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const placeholder = <div className="min-h-screen" />;
+
   return (
     <>
       <a
@@ -17,9 +23,13 @@ export default function App() {
       <Nav />
       <main id="main">
         <Hero />
-        <Suspense fallback={<div className="min-h-screen" />}>
-          <Below />
-        </Suspense>
+        {mounted ? (
+          <Suspense fallback={placeholder}>
+            <Below />
+          </Suspense>
+        ) : (
+          placeholder
+        )}
       </main>
     </>
   );

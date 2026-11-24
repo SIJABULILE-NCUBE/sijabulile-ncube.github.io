@@ -88,7 +88,7 @@ export function Awards() {
           <Reveal className="relative flex flex-col justify-center overflow-hidden rounded-3xl border border-gold-400/40 bg-gradient-to-br from-gold-400/15 via-navy-850 to-navy-850 p-8 md:p-10">
             <Trophy aria-hidden="true" className="absolute -right-6 -bottom-6 size-56 text-gold-400/10" strokeWidth={1} />
             <div className="relative">
-              <span className="mb-6 inline-flex size-14 items-center justify-center rounded-2xl bg-gold-400 text-navy-950 shadow-[0_10px_40px_-8px_rgb(227_182_91/0.6)]">
+              <span className="mb-6 inline-flex size-14 items-center justify-center rounded-2xl bg-gold-400 text-navy-950">
                 <Trophy className="size-7" aria-hidden="true" />
               </span>
               <h3 className="font-display text-4xl font-semibold text-white md:text-5xl">
@@ -267,7 +267,7 @@ export function Contact() {
               <a
                 href={cvPath}
                 download
-                className="inline-flex items-center gap-2 rounded-full bg-gold-400 px-6 py-3.5 font-semibold text-navy-950 shadow-[0_10px_40px_-10px_rgb(227_182_91/0.7)] transition hover:bg-gold-300"
+                className="inline-flex items-center gap-2 rounded-full bg-gold-400 px-6 py-3.5 font-semibold text-navy-950 transition hover:bg-gold-300"
               >
                 <Download className="size-4" aria-hidden="true" />
                 {hero.cvCta}

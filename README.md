@@ -22,6 +22,7 @@ All site copy comes from [`PORTFOLIO_CONTENT.md`](./PORTFOLIO_CONTENT.md), the s
 - [Framer Motion](https://motion.dev) for scroll reveals, counters and hover tilt (respects `prefers-reduced-motion`)
 - [Lucide](https://lucide.dev) icons, self-hosted Fraunces and Inter variable fonts
 - [Playwright](https://playwright.dev) + [sharp](https://sharp.pixelplumbing.com) to capture and optimise project screenshots
+- Build-time pre-render of the hero (`react-dom/server`) so the headline paints before any JavaScript runs
 - GitHub Actions + GitHub Pages for build and deployment
 
 ## Run it locally
@@ -38,7 +39,7 @@ npm run dev        # start the dev server at http://localhost:5173
 Other scripts:
 
 ```bash
-npm run build      # type-check and build to dist/
+npm run build      # type-check, build to dist/ and pre-render the hero into index.html
 npm run preview    # serve the production build locally
 node scripts/capture-screenshots.mjs   # refresh project screenshots from the live sites
 ```
@@ -54,8 +55,10 @@ public/                  static files served as-is
   projects/              project screenshots (WebP)
 src/
   data/content.ts        all site copy, mirrored from PORTFOLIO_CONTENT.md
+  entry-server.tsx       build-time render used by scripts/prerender.mjs
+  Below.tsx              below-the-fold sections, lazy-loaded with Framer Motion
   components/            page sections and shared UI (reveal, counter, tilt)
-scripts/                 screenshot capture and image optimisation
+scripts/                 screenshot capture, image optimisation and pre-render
 .github/workflows/       build on every PR, deploy to Pages on main
 ```
 

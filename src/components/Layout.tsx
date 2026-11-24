@@ -9,9 +9,8 @@ export function Background() {
   ];
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-navy-900">
-      <div className="aurora aurora--emerald -top-[20vh] -left-[15vw] h-[70vh] w-[70vw]" />
-      <div className="aurora aurora--gold top-[30vh] -right-[20vw] h-[65vh] w-[60vw]" />
-      <div className="aurora aurora--blue -bottom-[25vh] left-[10vw] h-[70vh] w-[80vw]" />
+      <div className="aurora-static absolute inset-0" />
+      <div className="aurora absolute -inset-[10%]" />
       <div className="grid-overlay absolute inset-0" />
       {stars.map(([x, y], i) => (
         <span
@@ -55,7 +54,7 @@ export function Nav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open ? 'border-b border-white/5 bg-navy-900/85 backdrop-blur-md' : 'bg-transparent'
+        scrolled || open ? 'border-b border-white/5 bg-navy-900/95' : 'bg-transparent'
       }`}
     >
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
