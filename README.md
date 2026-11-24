@@ -1,92 +1,72 @@
-# Sijabulile Ncube | Developer Portfolio
+# Sijabulile Ncube · Portfolio
 
-## Overview
+My personal portfolio website: who I am, the products I've built, my experience in software and credit risk, and how to contact me.
 
-This portfolio website showcases my transition from financial services into software development. With over 10 years of experience in financial analysis and risk management, I bring strong analytical thinking, problem-solving, and attention to detail into the tech industry.
+**Live site:** https://sijabulile-ncube.github.io
 
-The portfolio highlights my technical skills, completed projects, and professional background while demonstrating proficiency in HTML, CSS, and JavaScript.
+## What's inside
 
----
+- **Hero** with my headline, highlights and a Download CV button
+- **Animated stats** strip
+- **Featured projects**, led by Bit by Bit, with real screenshots, problem, role, stack and links
+- **Experience** timeline
+- **Awards and achievements**, including the GAIC × Tether Demo Day 1st place and the bootcamp certificate
+- **Education and certifications**, **skills** grouped by area, and **contact** details
 
-## Features
+All site copy comes from [`PORTFOLIO_CONTENT.md`](./PORTFOLIO_CONTENT.md), the single source of truth. The words live in code in `src/data/content.ts`, which mirrors that file.
 
-* Responsive design for desktop, tablet, and mobile devices
-* Clean and professional user interface
-* Project showcase section with GitHub repository links
-* Downloadable CV
-* LinkedIn and GitHub profile integration
-* Mobile-friendly navigation menu
-* Interactive JavaScript functionality
-* Basic SEO implementation using meta tags
+## Tech stack
 
----
+- [Vite](https://vite.dev) + [React](https://react.dev) + [TypeScript](https://www.typescriptlang.org)
+- [Tailwind CSS v4](https://tailwindcss.com)
+- [Framer Motion](https://motion.dev) for scroll reveals, counters and hover tilt (respects `prefers-reduced-motion`)
+- [Lucide](https://lucide.dev) icons, self-hosted Fraunces and Inter variable fonts
+- [Playwright](https://playwright.dev) + [sharp](https://sharp.pixelplumbing.com) to capture and optimise project screenshots
+- GitHub Actions + GitHub Pages for build and deployment
 
-## Technologies Used
+## Run it locally
 
-* HTML5
-* CSS3
-* JavaScript (ES6)
-* Git & GitHub
+You need Node.js 22 or newer.
 
----
-
-## Projects
-
-### Daily Task Tracker
-
-A task management application that allows users to create, organize, and track daily tasks. Features include task completion tracking and local storage functionality.
-
-**Technologies:** HTML, CSS, JavaScript, Local Storage
-
-### Kanban Task Management App
-
-A project management board that enables users to move tasks between workflow stages and manage progress efficiently.
-
-**Technologies:** HTML, CSS, JavaScript, Local Storage
-
----
-
-## Project Structure
-
-```text
-portfolio/
-│
-├── index.html
-├── style.css
-├── script.js
-├── README.md
-│
-└── assets/
-    ├── Sijabulile-Ncube-CV.pdf
-    └── project-images/
+```bash
+git clone https://github.com/Sijabulile-Ncube/sijabulile-ncube.github.io.git
+cd sijabulile-ncube.github.io
+npm install
+npm run dev        # start the dev server at http://localhost:5173
 ```
 
----
+Other scripts:
 
-## Running the Project Locally
+```bash
+npm run build      # type-check and build to dist/
+npm run preview    # serve the production build locally
+node scripts/capture-screenshots.mjs   # refresh project screenshots from the live sites
+```
 
-1. Clone or download the repository.
-2. Open the project folder in VS Code.
-3. Install the Live Server extension (optional).
-4. Open `index.html` using Live Server or directly in your browser.
+(For the screenshot script, install the browser once with `npx playwright install chromium`.)
 
----
+## Project structure
 
-## Contact
+```
+public/                  static files served as-is
+  Sijabulile_Ncube_CV.pdf
+  certificates/          GAIC × Tether bootcamp certificate (PDF and image)
+  projects/              project screenshots (WebP)
+src/
+  data/content.ts        all site copy, mirrored from PORTFOLIO_CONTENT.md
+  components/            page sections and shared UI (reveal, counter, tilt)
+scripts/                 screenshot capture and image optimisation
+.github/workflows/       build on every PR, deploy to Pages on main
+```
 
-**Sijabulile Ncube**
+## Deployment
 
-* LinkedIn: https://www.linkedin.com/in/sijabulilemn/
-* GitHub: https://github.com/SIJABULILE-NCUBE
+Every pull request runs the build. Every push to `main` builds the site and deploys `dist/` to GitHub Pages through the **Build and deploy** workflow. Pages is set to deploy from GitHub Actions.
 
----
+## Updating content
 
-## Future Improvements
+1. Edit `PORTFOLIO_CONTENT.md`.
+2. Mirror the change in `src/data/content.ts`.
+3. Open a pull request. The site deploys when it merges.
 
-* Add additional full-stack projects
-* Integrate a backend contact form
-* Deploy live projects and case studies
-* Expand portfolio with React and modern JavaScript frameworks
-
-## Website found on:
-https://sijabulile-ncube.github.io/
+Please keep the copy free of em dashes (the CI check fails if it finds one).
