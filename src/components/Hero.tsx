@@ -56,7 +56,7 @@ export function Hero() {
           <div {...rise(0.24)} className="rise mt-9 flex flex-wrap gap-3">
             <a
               href="#work"
-              className="group inline-flex items-center gap-2 rounded-full bg-emerald-400 px-6 py-3.5 font-semibold text-navy-950 shadow-[0_10px_40px_-10px_rgb(52_211_153/0.6)] transition hover:bg-emerald-300"
+              className="group inline-flex items-center gap-2 rounded-full bg-emerald-400 px-6 py-3.5 font-semibold text-navy-950 transition hover:bg-emerald-300"
             >
               {hero.primaryCta}
               <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
@@ -88,7 +88,7 @@ export function Hero() {
                 className="aspect-[4/4.2] w-full rounded-[1.6rem] object-cover object-[50%_30%]"
               />
             </picture>
-            <div className="glass absolute inset-x-5 bottom-5 flex items-center justify-between gap-3 rounded-2xl px-4 py-3 backdrop-blur-md">
+            <div className="glass absolute inset-x-5 bottom-5 flex items-center justify-between gap-3 rounded-2xl px-4 py-3 bg-navy-900/80">
               <div>
                 <p className="font-display text-base font-semibold text-white">{hero.name}</p>
                 <p className="flex items-center gap-1.5 text-xs text-slate-300">

@@ -60,24 +60,28 @@
 @utility glass {
   background: linear-gradient(180deg, rgb(255 255 255 / 0.045), rgb(255 255 255 / 0.015));
   border: 1px solid rgb(255 255 255 / 0.08);
-  box-shadow: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 20px 50px -25px rgb(0 0 0 / 0.6);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.04) inset;
 }
 
-/* Animated background: GPU-friendly transforms on radial gradients, no blur filters. */
-.aurora {
-  position: absolute;
-  border-radius: 9999px;
-  will-change: transform;
-  animation: drift 26s ease-in-out infinite alternate;
+/* Animated background, kept cheap to paint: static colour fields painted once, plus one layer that only translates
+   (no scale, no blur, no will-change), so the compositor moves an existing texture instead of re-rasterising it. */
+.aurora-static {
+  background:
+    radial-gradient(45vw 40vh at 10% 5%, rgb(16 185 129 / 0.16), transparent 70%),
+    radial-gradient(40vw 40vh at 95% 45%, rgb(227 182 91 / 0.10), transparent 70%),
+    radial-gradient(55vw 45vh at 40% 100%, rgb(59 92 180 / 0.20), transparent 70%);
 }
-.aurora--emerald { background: radial-gradient(closest-side, rgb(16 185 129 / 0.20), transparent); }
-.aurora--gold { background: radial-gradient(closest-side, rgb(227 182 91 / 0.14), transparent); animation-duration: 32s; animation-delay: -8s; }
-.aurora--blue { background: radial-gradient(closest-side, rgb(59 92 180 / 0.22), transparent); animation-duration: 38s; animation-delay: -14s; }
+.aurora {
+  background:
+    radial-gradient(30vw 30vh at 30% 30%, rgb(16 185 129 / 0.10), transparent 70%),
+    radial-gradient(28vw 28vh at 75% 65%, rgb(227 182 91 / 0.07), transparent 70%);
+  animation: drift 30s ease-in-out infinite alternate;
+}
 
 @keyframes drift {
-  0% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(6vw, 4vh, 0) scale(1.12); }
-  100% { transform: translate3d(-4vw, 8vh, 0) scale(0.95); }
+  0% { transform: translate3d(-3%, -2%, 0); }
+  50% { transform: translate3d(3%, 2%, 0); }
+  100% { transform: translate3d(-1%, 4%, 0); }
 }
 
 .grid-overlay {

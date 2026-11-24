@@ -27,7 +27,7 @@ jobs:
       - run: npm ci
       - name: Check for em dashes in site source and content
         run: |
-          if grep -rn $'—' src index.html PORTFOLIO_CONTENT.md; then
+          if grep -rnP '\x{2014}' src index.html PORTFOLIO_CONTENT.md; then
             echo "Em dash found. The site must not contain em dashes." && exit 1
           fi
       - run: npm run build

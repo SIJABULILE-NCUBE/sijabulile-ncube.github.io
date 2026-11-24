@@ -59,7 +59,7 @@ function ProjectArt({ p }: { p: Project }) {
               }}
             />
           ))}
-          <div className="absolute -bottom-24 size-56 rounded-full bg-[radial-gradient(circle_at_35%_30%,#6ee7b7,#10b981_35%,#16264a_70%)] shadow-[0_0_80px_20px_rgb(52_211_153/0.25)]" />
+          <div className="absolute -bottom-24 size-56 rounded-full bg-[radial-gradient(circle_at_35%_30%,#6ee7b7,#10b981_35%,#16264a_70%)]" />
         </>
       )}
       {p.id === 'creditwise' && (
@@ -109,11 +109,11 @@ function Featured() {
       <div className="relative grid overflow-hidden rounded-[2rem] bg-navy-850 lg:grid-cols-[1.1fr_1fr]">
         <div className="relative p-4 md:p-6">
           <Tilt>
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_8px_20px_-10px_rgb(0_0_0/0.7)]">
               <img src={p.images![0].src} alt={p.images![0].alt} width={1200} height={790} loading="lazy" decoding="async" className="w-full" />
             </div>
           </Tilt>
-          <div className="relative -mt-14 ml-auto w-3/5 overflow-hidden rounded-xl border border-white/10 shadow-2xl md:-mt-20">
+          <div className="relative -mt-14 ml-auto w-3/5 overflow-hidden rounded-xl border border-white/10 shadow-[0_8px_20px_-10px_rgb(0_0_0/0.7)] md:-mt-20">
             <img src={p.images![1].src} alt={p.images![1].alt} width={1200} height={815} loading="lazy" decoding="async" className="w-full" />
           </div>
         </div>
@@ -173,7 +173,7 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
       <Tilt className="h-full rounded-3xl">
         <article
           className={`flex h-full flex-col overflow-hidden rounded-3xl border bg-navy-850/90 ${
-            wide ? 'border-gold-400/40 shadow-[0_30px_80px_-40px_rgb(227_182_91/0.45)] lg:grid lg:grid-cols-2' : 'border-white/10'
+            wide ? 'border-gold-400/40 lg:grid lg:grid-cols-2' : 'border-white/10'
           }`}
         >
           <div className={`relative overflow-hidden border-b border-white/5 ${wide ? 'aspect-[16/9] lg:aspect-auto lg:h-full lg:border-r lg:border-b-0' : 'aspect-[16/9]'}`}>
