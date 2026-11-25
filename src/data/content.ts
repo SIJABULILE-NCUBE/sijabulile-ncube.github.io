@@ -142,7 +142,8 @@ export const projects: Project[] = [
     live: 'https://fixmykasi.vercel.app',
     github: { url: 'https://github.com/Paul280-cloud/fixmykasi' },
     images: [
-      { src: '/projects/fixmykasi.webp', alt: 'FixMyKasi landing page with the headline "Report it. Track it. Get it fixed." and options to create an account, log in or browse faults' },
+      { src: '/projects/fixmykasi.webp', alt: 'FixMyKasi resident screens on three phones: the fault list with status badges, a fault timeline showing who is fixing it and by when, and the update status form' },
+      { src: '/projects/fixmykasi-3.webp', alt: 'FixMyKasi ward staff screens on three phones: the ward queue, the assign fault form with field team and expected fix date, and the field team job list' },
       { src: '/projects/fixmykasi-2.webp', alt: 'FixMyKasi fault page for a pothole marked Fixed, showing its location, the responsible municipal roads team, the expected fix date and the status history' },
     ],
     accent: 'emerald',
@@ -158,6 +159,10 @@ export const projects: Project[] = [
     stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Recharts', 'Framer Motion'],
     live: null,
     github: { url: 'https://github.com/Sijabulile-Ncube/creditwise-ai' },
+    images: [
+      { src: '/projects/creditwise.webp', alt: 'CreditWise AI Stitch designs on three phones: the welcome screen "See your money the way a lender does.", the My Money income and expenses view, and the Ask CreditWise chat explaining a DTI ratio' },
+      { src: '/projects/creditwise-2.webp', alt: 'CreditWise AI Stitch designs on three phones: flagged transactions, a before and after comparison of DTI and status band, and the Get Ready credit guides checklist' },
+    ],
     accent: 'emerald',
   },
   {
