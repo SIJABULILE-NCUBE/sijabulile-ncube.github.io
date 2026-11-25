@@ -68,7 +68,7 @@ For each: screenshot, problem, my role, tech stack, live link, GitHub link.
 - **What it does:** Residents report a fault with a photo, location and category; AI suggests the category and urgency and translates reports; residents track each fault until it's confirmed fixed.
 - **My role:** Product Owner and Backend Developer in a team of 4 (Team Grok), and the team's submitter. Built the fault assignment backend and the assign screen.
 - **Stack:** React, TypeScript, Node.js, Supabase, AI integration
-- **Live:** TODO
+- **Live:** https://fixmykasi.vercel.app
 - **GitHub:** https://github.com/Paul280-cloud/fixmykasi
 
 ### 4.4 CreditWise AI

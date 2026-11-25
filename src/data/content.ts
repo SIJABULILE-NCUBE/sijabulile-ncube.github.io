@@ -139,7 +139,7 @@ export const projects: Project[] = [
       "Residents report a fault with a photo, location and category; AI suggests the category and urgency and translates reports; residents track each fault until it's confirmed fixed.",
     role: "Product Owner and Backend Developer in a team of 4 (Team Grok), and the team's submitter. Built the fault assignment backend and the assign screen.",
     stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'AI integration'],
-    live: null,
+    live: 'https://fixmykasi.vercel.app',
     github: { url: 'https://github.com/Paul280-cloud/fixmykasi' },
     accent: 'emerald',
   },
