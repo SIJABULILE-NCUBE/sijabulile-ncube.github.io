@@ -2,6 +2,7 @@ import { ArrowUpRight, Check, Clock, Lock, Trophy } from 'lucide-react';
 import { alsoBuilt, bitByBitDemo, COMING_SOON, featured, projects, type Project } from '../data/content';
 import { Chip, GitHubIcon, Reveal, SectionHeading, Tilt } from './ui';
 import { DemoPlayer } from './DemoPlayer';
+import { SlidesButton } from './ProjectSlides';
 
 const btn =
   'inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition focus-visible:outline-offset-2';
@@ -38,6 +39,7 @@ function ProjectLinks({ p }: { p: Project }) {
           {p.github.label}
         </span>
       )}
+      <SlidesButton id={p.id} />
     </div>
   );
 }
@@ -249,6 +251,7 @@ export function Projects() {
                       <GitHubIcon /> GitHub
                       <span className="sr-only">: {a.name} repository (opens in a new tab)</span>
                     </a>
+                    <SlidesButton id={a.name.toLowerCase()} />
                   </div>
                 </div>
               </li>
