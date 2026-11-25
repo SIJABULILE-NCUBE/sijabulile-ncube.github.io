@@ -141,6 +141,10 @@ export const projects: Project[] = [
     stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'AI integration'],
     live: 'https://fixmykasi.vercel.app',
     github: { url: 'https://github.com/Paul280-cloud/fixmykasi' },
+    images: [
+      { src: '/projects/fixmykasi.webp', alt: 'FixMyKasi landing page with the headline "Report it. Track it. Get it fixed." and options to create an account, log in or browse faults' },
+      { src: '/projects/fixmykasi-2.webp', alt: 'FixMyKasi fault page for a pothole marked Fixed, showing its location, the responsible municipal roads team, the expected fix date and the status history' },
+    ],
     accent: 'emerald',
   },
   {
@@ -182,6 +186,10 @@ export const projects: Project[] = [
     stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'canvas animation'],
     live: 'none',
     github: { label: 'Private client repo' },
+    images: [
+      { src: '/projects/matshiya.webp', alt: 'Matshiya Technologies landing page with the headline "Integrated ICT and security infrastructure, engineered for continuity." over a city skyline' },
+      { src: '/projects/matshiya-2.webp', alt: 'Matshiya Technologies capabilities section listing IT infrastructure and networking, wireless infrastructure, cybersecurity and Microsoft 365 services' },
+    ],
     accent: 'gold',
   },
 ];

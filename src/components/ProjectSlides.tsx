@@ -162,7 +162,7 @@ function Lightbox({ deck, onClose }: { deck: Deck; onClose: () => void }) {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
+      <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-2 px-3 pt-3 sm:gap-x-4 sm:px-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
         <button type="button" onClick={prev} className={ctrl} aria-label="Previous slide">
           <ChevronLeft className="size-5" aria-hidden="true" />
         </button>
