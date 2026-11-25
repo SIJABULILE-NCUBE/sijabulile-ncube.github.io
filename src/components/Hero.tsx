@@ -125,19 +125,16 @@ export function Hero() {
           className="rise-scale relative mx-auto w-full max-w-sm lg:mt-8 lg:max-w-none"
         >
           <div aria-hidden="true" className="absolute -inset-2 rounded-[2.25rem] sm:-inset-4 bg-gradient-to-br from-gold-400/30 via-transparent to-emerald-400/30 opacity-70" />
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-navy-800 p-2">
-            <picture>
-              <source srcSet="/profile.webp" type="image/webp" />
-              <img
-                src="/profile.jpg"
-                alt="Portrait of Sijabulile Ncube"
-                width={814}
-                height={654}
-                fetchPriority="high"
-                className="aspect-[4/4.2] w-full rounded-[1.6rem] object-cover object-[50%_30%]"
-              />
-            </picture>
-            <div className="glass absolute inset-x-5 bottom-5 flex items-center justify-between gap-3 rounded-2xl px-4 py-3 bg-navy-900/80">
+          <div className="relative overflow-hidden rounded-[2rem] border border-gold-400/35 bg-navy-800 p-2 shadow-[0_0_0_1px_rgb(227_182_91/0.08),0_0_42px_-8px_rgb(227_182_91/0.45)]">
+            <img
+              src="/profile-sketch.webp"
+              alt="Pencil sketch portrait of Sijabulile Ncube"
+              width={814}
+              height={654}
+              fetchPriority="high"
+              className="aspect-[4/4.2] w-full rounded-[1.6rem] object-cover object-[50%_30%]"
+            />
+            <div className="absolute inset-x-5 bottom-5 flex items-center justify-between gap-3 rounded-2xl border border-gold-400/25 bg-navy-900/90 px-4 py-3 shadow-[0_8px_24px_-8px_rgb(0_0_0/0.6)] backdrop-blur-sm">
               <div>
                 <p className="font-display text-base font-semibold text-white">{hero.name}</p>
                 <p className="flex items-center gap-1.5 text-xs text-slate-300">

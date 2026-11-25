@@ -20,7 +20,7 @@ Writing style: no em dashes anywhere on the site.
   - ⭐ Melsoft Academy Top 25 (ranked 6th of 500+ applicants)
   - 🎓 Class Representative
 - **Buttons:** View my work · Download CV
-- **Photo:** existing photo from the current site (keep it)
+- **Photo:** black-and-white pencil sketch of the existing photo (/profile-sketch.webp; /profile-sketch.jpg for the social preview). The colour original is backed up outside the repo.
 
 ## 2. Stats strip (animated counters)
 
