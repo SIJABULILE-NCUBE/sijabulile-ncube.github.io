@@ -12,6 +12,8 @@ Writing style: no em dashes anywhere on the site.
 - **Name:** Sijabulile Ncube
 - **Title line:** Full-Stack Developer · AI-Augmented Engineering · 10+ years in Credit Risk
 - **Headline:** I build software that people can trust with their money.
+- **Rotating line (under the headline):** Full-Stack Developer · AI-Augmented Engineer · 1st Place, GAIC × Tether AI Bootcamp
+- **Availability badge:** Available for work
 - **Sub-headline:** Junior Full-Stack AI Software Engineer at Melsoft Digital and Credit Risk Specialist at Absa Group Limited. I combine React, TypeScript, Node.js and Supabase with over a decade of banking experience to build products that are secure, fair and easy to use.
 - **Badges (small pills under the headline):**
   - 🏆 1st place, GAIC × Tether Advanced AI Foundations Bootcamp
@@ -22,10 +24,10 @@ Writing style: no em dashes anywhere on the site.
 
 ## 2. Stats strip (animated counters)
 
-- 10+ years in banking and credit risk
-- 6th of 500+ applicants (Melsoft Top 25)
-- 1st place, GAIC × Tether Demo Day
-- 6 featured projects
+- 6th of 500+ · Melsoft Academy
+- 1st Place · GAIC × Tether
+- 6 live projects
+- 10+ years in finance
 
 ## 3. About
 
@@ -45,6 +47,8 @@ For each: screenshot, problem, my role, tech stack, live link, GitHub link.
 - **Tagline:** Own it bit by bit.
 - **Problem:** Small South African shops still run lay-bys on paper cards. Customers lose track of what they've paid, shops chase payments and argue about balances, and stock sits on hold.
 - **What it does:** A digital lay-by platform. Shops create instalment plans, customers see their balance and due dates, every payment is recorded with proof, and owners see what's on track, overdue or ready to collect. No interest, no credit checks, no debt.
+- **Result:** Shipped and live as my final capstone: one place for shops and customers to track every lay-by and payment, with Row Level Security on every table, money rules built test-first, Playwright end-to-end tests and CI on every PR.
+- **Demo video:** https://www.loom.com/share/4d8cb2d0a224459c94116a401b6623f0 (5 min) · Part 2: https://www.loom.com/share/57d46a717af24f6aac323089520fdf88
 - **Highlights:** Customer and Shop owner roles; Row Level Security on every table; proof-of-payment uploads to private storage with owner confirm or reject; owner dashboard (overdue, ready to collect, total outstanding); lay-by risk score (credit-risk logic, fully unit tested); one-tap WhatsApp reminders; money rules built test-first; Playwright end-to-end tests; CI on every PR.
 - **My role:** Solo founder and full-stack developer: business case, PRD, Stitch designs, implementation plan, build and deployment.
 - **Stack:** React, TypeScript, Vite, Tailwind CSS, Node.js, Express, Supabase (Postgres, Auth, Storage, RLS), Vitest, React Testing Library, Supertest, Playwright, GitHub Actions, Vercel, Render

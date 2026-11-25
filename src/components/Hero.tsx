@@ -1,5 +1,52 @@
 import { ArrowDown, Download, GraduationCap, MapPin, Star, Trophy } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { contact, cvPath, hero } from '../data/content';
+
+/**
+ * Cycles through short role lines. The pre-rendered HTML shows the first line; rotation starts after hydration.
+ * With reduced motion the lines are shown together and never move. Screen readers always get the full list once.
+ */
+function RotatingLine({ items }: { items: readonly string[] }) {
+  const [i, setI] = useState(0);
+  const [still, setStill] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const sync = () => setStill(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
+
+  useEffect(() => {
+    if (still) return;
+    const id = setInterval(() => setI((n) => (n + 1) % items.length), 2600);
+    return () => clearInterval(id);
+  }, [still, items.length]);
+
+  const cls = 'font-display text-lg font-medium text-gold-200 sm:text-xl md:text-2xl';
+  return (
+    <p className={cls}>
+      <span className="sr-only">{items.join(', ')}</span>
+      {still ? (
+        <span aria-hidden="true">{items.join(' · ')}</span>
+      ) : (
+        <span aria-hidden="true" className="grid">
+          {items.map((t, n) => (
+            <span
+              key={t}
+              className={`col-start-1 row-start-1 transition-all duration-500 ease-out ${
+                n === i ? 'translate-y-0 opacity-100' : n === (i - 1 + items.length) % items.length ? '-translate-y-3 opacity-0' : 'translate-y-3 opacity-0'
+              }`}
+            >
+              {t}
+            </span>
+          ))}
+        </span>
+      )}
+    </p>
+  );
+}
 
 const badgeIcons = { trophy: Trophy, star: Star, grad: GraduationCap };
 
@@ -13,15 +60,6 @@ export function Hero() {
     <section id="top" aria-labelledby="hero-title" className="relative px-5 pt-28 pb-16 md:px-8 md:pt-36 md:pb-24">
       <div className="mx-auto grid max-w-6xl items-start gap-14 lg:grid-cols-[1.15fr_0.85fr]">
         <div>
-          <p {...rise(0)} className="rise mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold tracking-[0.2em] text-emerald-300 uppercase">
-            {hero.titleLine.map((t, i) => (
-              <span key={t} className="flex items-center gap-3">
-                {i > 0 && <span aria-hidden="true" className="size-1 rounded-full bg-gold-400" />}
-                {t}
-              </span>
-            ))}
-          </p>
-
           <h1 {...rise(0.05)} id="hero-title" className="rise font-display text-white">
             <span className="mb-4 block text-2xl font-medium text-slate-300 md:text-3xl">{hero.name}</span>
             <span className="block text-[2.6rem] leading-[1.05] font-semibold tracking-tight sm:text-6xl lg:text-[4.25rem]">
@@ -30,6 +68,17 @@ export function Hero() {
               {after}
             </span>
           </h1>
+
+          <div {...rise(0.09)} className="rise mt-6 flex flex-col items-start gap-3">
+            <RotatingLine items={hero.rotating} />
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-300">
+              <span aria-hidden="true" className="relative flex size-2">
+                <span className="pulse-ring absolute inset-0 rounded-full bg-emerald-400" />
+                <span className="relative size-2 rounded-full bg-emerald-400" />
+              </span>
+              {hero.availability}
+            </span>
+          </div>
 
           <p {...rise(0.12)} className="rise mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
             {hero.subHeadline}
@@ -56,7 +105,7 @@ export function Hero() {
           <div {...rise(0.24)} className="rise mt-9 flex flex-wrap gap-3">
             <a
               href="#work"
-              className="group inline-flex items-center gap-2 rounded-full bg-emerald-400 px-6 py-3.5 font-semibold text-navy-950 transition hover:bg-emerald-300"
+              className="glow-gold group inline-flex items-center gap-2 rounded-full bg-emerald-400 px-6 py-3.5 font-semibold text-navy-950 transition hover:bg-emerald-300"
             >
               {hero.primaryCta}
               <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
