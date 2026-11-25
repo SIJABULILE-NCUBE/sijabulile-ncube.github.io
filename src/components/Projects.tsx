@@ -1,6 +1,7 @@
 import { ArrowUpRight, Check, Clock, Lock, Trophy } from 'lucide-react';
-import { alsoBuilt, COMING_SOON, featured, projects, type Project } from '../data/content';
+import { alsoBuilt, bitByBitDemo, COMING_SOON, featured, projects, type Project } from '../data/content';
 import { Chip, GitHubIcon, Reveal, SectionHeading, Tilt } from './ui';
+import { DemoPlayer } from './DemoPlayer';
 
 const btn =
   'inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition focus-visible:outline-offset-2';
@@ -9,7 +10,7 @@ function ProjectLinks({ p }: { p: Project }) {
   return (
     <div className="flex flex-wrap gap-2">
       {typeof p.live === 'string' && p.live !== 'none' && (
-        <a href={p.live} target="_blank" rel="noopener noreferrer" className={`${btn} bg-emerald-400 text-navy-950 hover:bg-emerald-300`}>
+        <a href={p.live} target="_blank" rel="noopener noreferrer" className={`${btn} glow-gold bg-emerald-400 text-navy-950 hover:bg-emerald-300`}>
           Live
           <ArrowUpRight className="size-4" aria-hidden="true" />
           <span className="sr-only">: {p.name} (opens in a new tab)</span>
@@ -107,15 +108,14 @@ function Featured() {
     <Reveal as="article" className="relative mb-10">
       <div aria-hidden="true" className="absolute -inset-px rounded-[2rem] bg-gradient-to-br from-gold-400/50 via-emerald-400/10 to-emerald-400/40" />
       <div className="relative grid overflow-hidden rounded-[2rem] bg-navy-850 lg:grid-cols-[1.1fr_1fr]">
-        <div className="relative p-4 md:p-6">
-          <Tilt>
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_8px_20px_-10px_rgb(0_0_0/0.7)]">
-              <img src={p.images![0].src} alt={p.images![0].alt} width={1200} height={790} loading="lazy" decoding="async" className="w-full" />
-            </div>
-          </Tilt>
-          <div className="relative -mt-14 ml-auto w-3/5 overflow-hidden rounded-xl border border-white/10 shadow-[0_8px_20px_-10px_rgb(0_0_0/0.7)] md:-mt-20">
-            <img src={p.images![1].src} alt={p.images![1].alt} width={1200} height={815} loading="lazy" decoding="async" className="w-full" />
-          </div>
+        <div className="relative p-4 md:p-6 lg:self-center">
+          <DemoPlayer
+            slides={bitByBitDemo.slides}
+            label={bitByBitDemo.label}
+            embed={bitByBitDemo.embed}
+            title={`${p.name} demo video`}
+            part2={bitByBitDemo.part2}
+          />
         </div>
 
         <div className="flex flex-col gap-6 p-6 md:p-10">
@@ -129,7 +129,8 @@ function Featured() {
           </div>
           <dl className="grid gap-5">
             <Detail label="Problem">{p.problem}</Detail>
-            <Detail label="What it does">{p.whatItDoes}</Detail>
+            <Detail label="Solution">{p.whatItDoes}</Detail>
+            <Detail label="Result">{p.result}</Detail>
             <Detail label="My role">{p.role}</Detail>
           </dl>
           <ProjectLinks p={p} />
@@ -240,7 +241,7 @@ export function Projects() {
                     <span className="block pt-1">{a.description.charAt(0).toUpperCase() + a.description.slice(1)}</span>
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    <a href={a.live} target="_blank" rel="noopener noreferrer" className={`${btn} bg-emerald-400 text-navy-950 hover:bg-emerald-300`}>
+                    <a href={a.live} target="_blank" rel="noopener noreferrer" className={`${btn} glow-gold bg-emerald-400 text-navy-950 hover:bg-emerald-300`}>
                       Live <ArrowUpRight className="size-4" aria-hidden="true" />
                       <span className="sr-only">: {a.name} (opens in a new tab)</span>
                     </a>

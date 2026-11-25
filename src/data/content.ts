@@ -6,6 +6,8 @@ export const COMING_SOON = 'Coming soon';
 export const hero = {
   name: 'Sijabulile Ncube',
   titleLine: ['Full-Stack Developer', 'AI-Augmented Engineering', '10+ years in Credit Risk'],
+  rotating: ['Full-Stack Developer', 'AI-Augmented Engineer', '1st Place, GAIC × Tether AI Bootcamp'],
+  availability: 'Available for work',
   headline: 'I build software that people can trust with their money.',
   subHeadline:
     'Junior Full-Stack AI Software Engineer at Melsoft Digital and Credit Risk Specialist at Absa Group Limited. I combine React, TypeScript, Node.js and Supabase with over a decade of banking experience to build products that are secure, fair and easy to use.',
@@ -20,12 +22,13 @@ export const hero = {
 
 export const cvPath = '/Sijabulile_Ncube_CV.pdf';
 
-export type Stat = { value: number; prefix?: string; suffix: string; label: string };
+/** Shown as: value + suffix (counted up), then qualifier, then label. Reads "6th of 500+ · Melsoft Academy". */
+export type Stat = { value: number; suffix: string; qualifier?: string; label: string };
 export const stats: Stat[] = [
-  { value: 10, suffix: '+', label: 'years in banking and credit risk' },
-  { value: 6, suffix: 'th', label: 'of 500+ applicants (Melsoft Top 25)' },
-  { value: 1, suffix: 'st', label: 'place, GAIC × Tether Demo Day' },
-  { value: 6, suffix: '', label: 'featured projects' },
+  { value: 6, suffix: 'th', qualifier: 'of 500+', label: 'Melsoft Academy' },
+  { value: 1, suffix: 'st', qualifier: 'Place', label: 'GAIC × Tether' },
+  { value: 6, suffix: '', label: 'live projects' },
+  { value: 10, suffix: '+', label: 'years in finance' },
 ];
 
 export const about = {
@@ -47,6 +50,7 @@ export type Project = {
   award?: string;
   tagline?: string;
   problem: string;
+  result?: string;
   whatItDoes: string;
   highlights?: string[];
   role: string;
@@ -77,6 +81,8 @@ export const featured: Project = {
     'Playwright end-to-end tests',
     'CI on every PR',
   ],
+  result:
+    'Shipped and live as my final capstone: one place for shops and customers to track every lay-by and payment, with Row Level Security on every table, money rules built test-first, Playwright end-to-end tests and CI on every PR.',
   role: 'Solo founder and full-stack developer: business case, PRD, Stitch designs, implementation plan, build and deployment.',
   stack: [
     'React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Node.js', 'Express',
@@ -90,6 +96,21 @@ export const featured: Project = {
     { src: '/projects/bit-by-bit-dashboard.webp', alt: 'Bit by Bit shop owner dashboard' },
   ],
   accent: 'gold',
+};
+
+/** Slides for the Bit by Bit demo player, in play order. */
+export const bitByBitDemo = {
+  slides: [
+    { src: '/projects/bitbybit-poster.png', alt: 'Bit by Bit demo title card' },
+    { src: '/projects/bitbybit-slide-how.png', alt: 'How Bit by Bit works, step by step' },
+    featured.images![0],
+    { src: '/projects/bitbybit-slide-features.png', alt: 'Bit by Bit key features' },
+    featured.images![1],
+    { src: '/projects/bitbybit-slide-stack.png', alt: 'Bit by Bit tech stack' },
+  ],
+  label: 'Watch the demo · 5 min',
+  embed: 'https://www.loom.com/embed/4d8cb2d0a224459c94116a401b6623f0?autoplay=1',
+  part2: { label: 'Part 2 of the demo', url: 'https://www.loom.com/share/57d46a717af24f6aac323089520fdf88' },
 };
 
 export const projects: Project[] = [

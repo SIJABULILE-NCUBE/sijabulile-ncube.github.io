@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Menu, X, Download } from 'lucide-react';
 import { cvPath, hero } from '../data/content';
 
@@ -36,12 +36,27 @@ const links = [
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const bar = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    let frame = 0;
+    const paint = () => {
+      frame = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (bar.current) bar.current.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`;
+    };
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
+      if (!frame) frame = requestAnimationFrame(paint);
+    };
     onScroll();
+    window.addEventListener('resize', onScroll, { passive: true });
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   useEffect(() => {
@@ -54,9 +69,15 @@ export function Nav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open ? 'border-b border-white/5 bg-navy-900/95' : 'bg-transparent'
+        scrolled || open ? 'border-b border-white/5 bg-navy-900 shadow-[0_8px_24px_-12px_rgb(0_0_0/0.6)]' : 'bg-transparent'
       }`}
     >
+      <div
+        ref={bar}
+        aria-hidden="true"
+        style={{ transform: 'scaleX(0)' }}
+        className="absolute inset-x-0 top-0 h-0.5 origin-left bg-gradient-to-r from-gold-500 via-gold-300 to-gold-400"
+      />
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
         <a href="#top" className="font-display text-lg font-semibold tracking-tight text-white">
           Sijabulile <span className="text-gradient-gold">Ncube</span>
