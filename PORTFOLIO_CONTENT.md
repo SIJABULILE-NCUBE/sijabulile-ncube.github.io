@@ -156,3 +156,16 @@ Do NOT list AWS, Azure, IBM or other AI certificates yet (not completed).
 - **Location:** Gauteng, South Africa
 - **CV:** `/Sijabulile_Ncube_CV.pdf` (Download CV button)
 - **Call to action:** Looking for a junior or intern developer who learns fast and ships real products? Let's talk.
+
+## 11. Project slides ("View slides" button)
+
+Every project except Bit by Bit (which has its demo video) has a slide deck, built in `src/data/slides.ts` from that project's card.
+Order: Title (name, pitch, award or label) · Problem · Solution (key features) · one slide per screenshot · Built with (stack) · Live and GitHub buttons (only the links the card has).
+Pitches and features are taken from each card's "What it does" text:
+
+- **Thembeka App:** A safer way to send money home to other African countries in USDT. Features: Offline KYC pre-check; Scam and money-mule shield; True-cost comparison; Human approval step before any USDT is sent.
+- **FixMyKasi:** Residents report community faults and track each one until it's confirmed fixed. Features: Report a fault with a photo, location and category; AI suggests the category and urgency; AI translates reports; Track each fault until it's confirmed fixed.
+- **CreditWise AI:** A mobile-first credit health and affordability app. Features: DTI ratio cards that reference NCA thresholds; Forensic audit-style transaction flagging; Compliance-aware AI insights; Plain-language vehicle finance explanations.
+- **House of Laundry:** A full 7-page business website for a real Soweto laundry business. Features: Cart for service selection; Laundry-themed CSS animations; Dark mode toggle; Client handover package.
+- **Matshiya Technologies:** A premium landing page for a technology business. Features: Space-to-Earth intro animation; Warp-speed starfield; Glowing Earth; Animated wire network.
+- **NeighbourLoan:** A neighbourhood tool-lending marketplace. Features: Neighbourhood tool-lending marketplace; Trust Score designed from credit-risk thinking. (No problem or stack slide: the card has none.)
